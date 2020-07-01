@@ -1,7 +1,8 @@
 import {
     DATA_LOAD_FAILED,
     DATA_LOAD_SUCCESS,
-    DATA_LOAD_INITIATED
+    DATA_LOAD_INITIATED,
+    CLEAR_ITEMS_LIST,
 } from '../types';
 
 
@@ -10,7 +11,7 @@ const initialState = {
     isDataLoading: false,
 }
 
-const dataReducer = (state = initialState, action) => {   
+const dataReducer = (state = initialState, action) => {
     switch (action.type) {
         case DATA_LOAD_INITIATED: {
             state = {
@@ -40,6 +41,14 @@ const dataReducer = (state = initialState, action) => {
                 isDataLoading: false
             }
             // console.log("succ", state);
+            return state;
+        }
+        case CLEAR_ITEMS_LIST : {
+            state = {
+                data : [],
+                error : "",
+                isDataLoading: false
+            }
             return state;
         }
         default: {

@@ -1,8 +1,17 @@
 import {
     DATA_LOAD_FAILED,
     DATA_LOAD_SUCCESS,
-    DATA_LOAD_INITIATED
+    DATA_LOAD_INITIATED,
+    CLEAR_ITEMS_LIST,
 } from '../types'
+
+export const clearItemsList = () => async (dispatch,  getState) =>{
+    //console.log(getState().data)
+    dispatch({
+        type : CLEAR_ITEMS_LIST,
+    })
+}
+
 
 // const sleep = (milliseconds) => {
 //     return new Promise(resolve => setTimeout(resolve, milliseconds))
