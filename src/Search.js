@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import './App.css';
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
+
+//import actions from actions file
 import { search, clearItemsList } from './actions'
 
 class Search extends React.Component {
@@ -14,9 +16,11 @@ class Search extends React.Component {
         }
     }
 
+    //assign proptypes whether they are required initially
+    //basically action function are required
     static propTypes = {
         search: PropTypes.func.isRequired,
-        ClearItemsList : PropTypes.func,
+        ClearItemsList : PropTypes.func.isRequired,
         isDataLoading: PropTypes.bool,
         data: PropTypes.array,
     }
@@ -24,6 +28,7 @@ class Search extends React.Component {
     onChange(event) {
         if (event.target.value.length > 0) {
             this.setState({ [event.target.name]: event.target.value, msg : "Loading...!!!" });
+            //call search action
             this.props.search(event.target.value)
         }else{
             this.setState({ [event.target.name]: event.target.value, msg : "" });
@@ -32,6 +37,7 @@ class Search extends React.Component {
     }
 
     ClearItemsList(){
+        //call clear items list 
         this.props.clearItemsList();
     }
 
@@ -73,9 +79,11 @@ class Search extends React.Component {
     }
 }
 
+// get state values and use them in props
 const mapStateToProps = (state) => ({
     data: state.data.data,
     isDataLoading: state.data.isDataLoading,
 })
 
+//connect props and modules with component
 export default connect(mapStateToProps, { search, clearItemsList })(Search);

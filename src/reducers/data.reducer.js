@@ -11,6 +11,10 @@ const initialState = {
     isDataLoading: false,
 }
 
+//action contains the data of dispatch emmited 
+//the dispatch must contain type argument in it and will be used in switch as action.type ***
+//other arguments emmitted by dispatch can be accessed by action using action.<emmittted name>
+
 const dataReducer = (state = initialState, action) => {
     switch (action.type) {
         case DATA_LOAD_INITIATED: {

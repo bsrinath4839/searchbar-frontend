@@ -17,6 +17,12 @@ export const clearItemsList = () => async (dispatch,  getState) =>{
 //     return new Promise(resolve => setTimeout(resolve, milliseconds))
 // }
 
+
+//getState is used to state of store should be used with dispatch only
+//dispatch calles the reducer function ie dispatches an event with type
+//reducer will catch the type of event emmited and task will be performed
+
+
 export const search = (item) => (dispatch, getState) => {
     if (item && item.length > 3) {
 
@@ -69,7 +75,7 @@ export const search = (item) => (dispatch, getState) => {
                 error: "DATA_LOAD_FAILED"
             })
         })
-    } else if(item.length <= 3){
+    }   else if(item.length <= 3){
         dispatch({
             type: DATA_LOAD_INITIATED
         })
